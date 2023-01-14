@@ -10,6 +10,14 @@
         "git merge",
         "git commit"
     ],
+    "homepage": "https://github.com/pigjs/fabric#readme",
+    "bugs": {
+        "url": "https://github.com/pigjs/fabric/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/pigjs/fabric"
+    },
     "license": "ISC",
     "author": "MrYeZiqing",
     "main": "lib/index.js",
