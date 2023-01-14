@@ -1,4 +1,4 @@
 module.exports = {
     root: true,
-    extends: [require.resolve('@pig/fabric/lib/eslint'),'prettier']
+    extends: [require.resolve('@pigjs/fabric/lib/eslint'),'prettier']
 };

@@ -5,11 +5,11 @@
 ### 安装
 
 ```js
-    npm i @pig/fabric -D
+    npm i @pigjs/fabric -D
     // or
-    yarn add @pig/fabric -D
+    yarn add @pigjs/fabric -D
     // or
-    pnpm add @pig/fabric -D
+    pnpm add @pigjs/fabric -D
 ```
 
 ### 使用
@@ -21,7 +21,7 @@
             "pig-fabric:install":"pig-fabric install"
         }
     }
-    // 初始化 fabric 配置
+    // 初始化 fabric，会自动生成 prettier, eslint, stylelint, husky, git hooks 的配置
     npm run pig-fabric:install
 ```
 
