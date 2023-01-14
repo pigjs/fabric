@@ -1,25 +1,25 @@
-import fs from 'fs'
-import path from 'path'
+import fs from 'fs';
+import path from 'path';
 
-import {eslintRules} from './eslintConfig'
-import {tsEslintRules} from './tsEslintConfig'
-import {reactEslintRules} from './reactEslintConfig'
+import { eslintRules } from './eslintConfig';
+import { reactEslintRules } from './reactEslintConfig';
+import { tsEslintRules } from './tsEslintConfig';
 
 const isTypeAwareEnabled = process.env.DISABLE_TYPE_AWARE === undefined;
 
 const parserOptions = {
     ecmaFeatures: {
-      jsx: true,
+        jsx: true
     },
     babelOptions: {
-      presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
-      plugins: [
-        ['@babel/plugin-proposal-decorators', { legacy: true }],
-        ['@babel/plugin-proposal-class-properties', { loose: true }],
-      ],
+        presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
+        plugins: [
+            ['@babel/plugin-proposal-decorators', { legacy: true }],
+            ['@babel/plugin-proposal-class-properties', { loose: true }]
+        ]
     },
     requireConfigFile: false,
-    project: isTypeAwareEnabled ? './tsconfig.json' : undefined,
+    project: isTypeAwareEnabled ? './tsconfig.json' : undefined
 };
 
 const isJsMoreTs = async (path = 'src') => {
@@ -27,15 +27,15 @@ const isJsMoreTs = async (path = 'src') => {
     const jsFiles = await fg(`${path}/src/**/*.{js,jsx}`, { deep: 3 });
     const tsFiles = await fg(`${path}/src/**/*.{ts,tsx}`, { deep: 3 });
     return jsFiles.length > tsFiles.length;
-  };
-  
+};
+
 const isTsProject = fs.existsSync(path.join(process.cwd() || '.', './tsconfig.json'));
 
 if (isTsProject) {
     try {
         isJsMoreTs(process.cwd()).then((jsMoreTs) => {
-        if (!jsMoreTs) return;
-        console.log('这是一个 TypeScript 项目，如果不是请删除 tsconfig.json');
+            if (!jsMoreTs) return;
+            console.log('这是一个 TypeScript 项目，如果不是请删除 tsconfig.json');
         });
     } catch (e) {
         console.log(e);
@@ -48,9 +48,9 @@ if (isTsProject) {
  * 0-不提示(off) 1-警告(warn) 2-抛出错误(error)
  */
 export default {
-    extends: ['eslint:recommended','plugin:react/recommended','plugin:prettier/recommended'],
+    extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:prettier/recommended'],
     parser: '@babel/eslint-parser',
-    plugins: ['jest', 'unicorn', 'import','react', 'react-hooks'],
+    plugins: ['jest', 'unicorn', 'import', 'react', 'react-hooks'],
     env: {
         browser: true,
         node: true,
@@ -83,17 +83,15 @@ export default {
             version: 'detect'
         }
     },
-    overrides: isTypeAwareEnabled ? [
-        {
-            files: ['**/*.{ts,tsx}'],
-            parser: '@typescript-eslint/parser',
-            rules: {
-                ...eslintRules,
-                ...reactEslintRules,
-                ...tsEslintRules
-            },
-            extends: ['eslint:recommended','plugin:react/recommended','plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended']
-        }
-    ]: [],
+    overrides: isTypeAwareEnabled
+        ? [
+              {
+                  files: ['**/*.{ts,tsx}'],
+                  parser: '@typescript-eslint/parser',
+                  rules: tsEslintRules,
+                  extends: ['plugin:@typescript-eslint/recommended']
+              }
+          ]
+        : [],
     parserOptions
 };

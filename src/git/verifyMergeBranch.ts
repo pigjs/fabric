@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { UserConfigProps } from '../utils/getUserConfig';
+import type { UserConfigProps } from '../utils/getUserConfig';
 import { mergeProps } from '../utils/mergeProps';
 
 /** 获取分支名称 */
@@ -58,7 +58,7 @@ export interface YVerifyMergeBranch {
 export default function (options: YVerifyMergeBranch) {
     const { hooks, cwd, userConfig } = options;
     if (hooks === 'pre-merge-commit') {
-        const GIT_REFLOG_ACTION = process.env.GIT_REFLOG_ACTION;
+        const { GIT_REFLOG_ACTION } = process.env;
         const targetBranch = GIT_REFLOG_ACTION?.split(' ')?.[1];
         if (!targetBranch) return;
         verifyBranch({ targetBranch, userConfig });

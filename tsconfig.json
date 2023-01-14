@@ -5,7 +5,8 @@
         "module": "esnext",
         "target": "esnext",
         "moduleResolution": "node",
-        "jsx": "react"
+        "jsx": "react",
+        "baseUrl": "."
     },
     "include": ["./src"],
     "exclude": ["node_modules", "bin", "lib", "guide", "template"]

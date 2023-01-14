@@ -1,3 +1,3 @@
-import stylelintConfig from './stylelintConfig'
+import stylelintConfig from './stylelintConfig';
 
-export default stylelintConfig
+export default stylelintConfig;

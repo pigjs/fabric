@@ -39,5 +39,5 @@ export const reactEslintRules = {
     'react-hooks/exhaustive-deps': 'warn', // Checks deps of Hooks
     /** 与 prettier 冲突 */
     'react/self-closing-comp': 'warn', // 禁止对没有子组件使用额外的结束标记
-    'react/jsx-key': 'warn', // 如果元素是被数组渲染，则需要元素上需要携带key值
-}
+    'react/jsx-key': 'warn' // 如果元素是被数组渲染，则需要元素上需要携带key值
+};

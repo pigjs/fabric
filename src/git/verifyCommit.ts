@@ -1,7 +1,7 @@
 // Invoked on the commit-msg git hook by husky.
 import chalk from 'chalk';
 import { readFileSync } from 'fs';
-import { UserConfigProps } from '../utils/getUserConfig';
+import type { UserConfigProps } from '../utils/getUserConfig';
 import { mergeProps } from '../utils/mergeProps';
 import { commitLogs } from '../utils/meta';
 

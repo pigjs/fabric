@@ -1,3 +1,3 @@
-import prettierConfig from './prettierConfig'
+import prettierConfig from './prettierConfig';
 
-export default prettierConfig
+export default prettierConfig;

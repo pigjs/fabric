@@ -2,7 +2,7 @@ const isTypeAwareEnabled = process.env.DISABLE_TYPE_AWARE === undefined;
 
 // https://typescript-eslint.io/rules/
 export const tsEslintRules = {
-    // 'no-undef': 'off',
+    'no-undef': 'off', // 禁用未声明的变量，除非它们在 /* global */ 注释中被提到
     '@typescript-eslint/adjacent-overload-signatures': 'off', // 要求函数重载签名是连续的
     '@typescript-eslint/array-type': 'error', // 要求对数组一致使用T[]或Array<T>
     '@typescript-eslint/await-thenable': 'off', // 禁止等待不是Thenable的值
@@ -11,8 +11,8 @@ export const tsEslintRules = {
     'brace-style': 'off',
     '@typescript-eslint/brace-style': 'off', // 为块强制一致的大括号样式
     '@typescript-eslint/class-literal-property-style': 'off', // 强制类的字面量以一致的样式公开
-    // 'comma-dangle': 'off',
-    '@typescript-eslint/comma-dangle': 'off', // 要求或禁止尾随逗号
+    'comma-dangle': 'warn', // 要求对象或数组成员的最后不能添加逗号
+    '@typescript-eslint/comma-dangle': 'warn', // 要求或禁止尾随逗号
     'comma-spacing': 'off',
     '@typescript-eslint/comma-spacing': 'off', // 强制逗号前后的间距一致
     '@typescript-eslint/consistent-indexed-object-style': 'warn', // 要求或禁止Record类型
@@ -26,25 +26,20 @@ export const tsEslintRules = {
     '@typescript-eslint/explicit-function-return-type': 'off', // 要求函数和类方法上显式返回类型
     'func-call-spacing': 'off',
     '@typescript-eslint/func-call-spacing': 'off', // 要求或禁止函数标识符及其调用之间有空格
-    // indent: 'off',
     'init-declarations': 'off',
     '@typescript-eslint/init-declarations': 'off', // 要求或禁止在变量声明中初始化
-    // 'keyword-spacing': 'off',
-    '@typescript-eslint/keyword-spacing': 'off', // 强制关键字前后的间距一致
+    '@typescript-eslint/keyword-spacing': ['warn', { before: true, after: true }], // 强制关键字前后的间距一致
     'lines-between-class-members': 'off',
     '@typescript-eslint/lines-between-class-members': 'off', // 要求或禁止类成员之间有空行
     '@typescript-eslint/member-delimiter-style': 'off', // 要求接口和类型字面量使用特定的成员分隔符样式
     '@typescript-eslint/member-ordering': 'off', // 要求一致的成员声明顺序
     '@typescript-eslint/method-signature-style': 'error', // Enforce using a particular method signature syntax
-    // 'no-array-constructor': 'off',
-    '@typescript-eslint/no-array-constructor': 'off', // Disallow generic Array constructors
+    '@typescript-eslint/no-array-constructor': 'warn', // 禁止使用 Array 构造函数
     '@typescript-eslint/no-base-to-string': 'off', // Require .toString() to only be called on objects which provide useful information when stringified
     '@typescript-eslint/no-confusing-non-null-assertion': 'error', // Disallow non-null assertion in locations that may be confusing
     '@typescript-eslint/no-confusing-void-expression': 'off', // Require expressions of type void to appear in statement position
-    // 'no-dupe-class-members': 'off',
-    '@typescript-eslint/no-dupe-class-members': 'error', // Disallow duplicate class members
-    // 'no-duplicate-imports': 'off',
-    '@typescript-eslint/no-duplicate-imports': 'off', // Disallow duplicate imports
+    '@typescript-eslint/no-dupe-class-members': 'error', // 禁止类成员中出现重复的名称
+    '@typescript-eslint/no-duplicate-imports': ['warn', { includeExports: true }], // 避免模块重复引入和导出
     '@typescript-eslint/no-dynamic-delete': 'off', // Disallow using the delete operator on computed key expressions
     'no-empty-function': 'off',
     '@typescript-eslint/no-empty-function': 'off', // Disallow empty functions
@@ -64,8 +59,7 @@ export const tsEslintRules = {
     'no-invalid-this': 'off', //
     '@typescript-eslint/no-invalid-this': 'warn', // Disallow this keywords outside of classes or class-like objects
     '@typescript-eslint/no-invalid-void-type': 'off', // Disallow void type outside of generic or return types
-    // 'no-loop-func': 'off',
-    '@typescript-eslint/no-loop-func': 'error', // Disallow function declarations that contain unsafe references inside loop statements
+    '@typescript-eslint/no-loop-func': 'warn', // 禁止在循环中出现 function 声明和表达式
     'no-loss-of-precision': 'off',
     '@typescript-eslint/no-loss-of-precision': 'off', // Disallow literal numbers that lose precision
     'no-magic-numbers': 'off',
@@ -79,10 +73,10 @@ export const tsEslintRules = {
     '@typescript-eslint/no-redeclare': 'error',
     '@typescript-eslint/no-require-imports': 'off',
     'no-shadow': 'off',
-    '@typescript-eslint/no-shadow': 'error',
+    '@typescript-eslint/no-shadow': 'off',
     '@typescript-eslint/no-this-alias': 'error',
     'no-throw-literal': 'off',
-    '@typescript-eslint/no-throw-literal': isTypeAwareEnabled ? 'error' : 'off',
+    '@typescript-eslint/no-throw-literal': 'off',
     '@typescript-eslint/no-type-alias': 'off',
     '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'off',
     '@typescript-eslint/no-unnecessary-condition': 'off',
@@ -96,9 +90,9 @@ export const tsEslintRules = {
     '@typescript-eslint/no-unsafe-return': 'off',
     'no-unused-expressions': 'off',
     '@typescript-eslint/no-unused-expressions': 'error',
-    // 'no-unused-vars': 'off',
-    // 'no-use-before-define': 'off',
-    // 'no-useless-constructor': 'off',
+    'no-unused-vars': 'off', // 禁止出现未使用过的变量
+    'no-use-before-define': 'off', // 不允许在变量定义之前使用它们
+    'no-useless-constructor': 'off', // 不需要编写无用的构造方法
     '@typescript-eslint/no-useless-constructor': 'error',
     '@typescript-eslint/non-nullable-type-assertion-style': 'off',
     '@typescript-eslint/prefer-as-const': 'off',
@@ -117,8 +111,7 @@ export const tsEslintRules = {
     '@typescript-eslint/prefer-string-starts-ends-with': 'off',
     '@typescript-eslint/prefer-ts-expect-error': 'off',
     '@typescript-eslint/promise-function-async': 'off',
-    // quotes: 'off',
-    '@typescript-eslint/quotes': 'off',
+    '@typescript-eslint/quotes': ['warn', 'single', 'avoid-escape'], // 强制使用一致的反勾号、双引号或单引号,
     '@typescript-eslint/require-array-sort-compare': 'off',
     'require-await': 'off',
     '@typescript-eslint/require-await': 'off',
@@ -126,11 +119,10 @@ export const tsEslintRules = {
     '@typescript-eslint/restrict-template-expressions': 'off',
     'no-return-await': 'off',
     '@typescript-eslint/return-await': 'off',
-    // semi: 'off',
-    '@typescript-eslint/semi': 'off',
+    semi: 'off',
+    '@typescript-eslint/semi': ['warn', 'always'], // 要求或禁止使用分号而不是 ASI（这个才是控制行尾部分号的，）,
     '@typescript-eslint/space-before-function-paren': 'off',
-    // 'space-infix-ops': 'off',
-    '@typescript-eslint/space-infix-ops': 'off',
+    '@typescript-eslint/space-infix-ops': ['warn', { int32Hint: true }], // 中间的运算符左右要添加空格,
     '@typescript-eslint/strict-boolean-expressions': 'off',
     '@typescript-eslint/switch-exhaustiveness-check': isTypeAwareEnabled ? 'error' : 'off',
     '@typescript-eslint/triple-slash-reference': 'error',

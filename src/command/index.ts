@@ -1,8 +1,8 @@
+import chalk from 'chalk';
 import verifyCommit from '../git/verifyCommit';
 import verifyMergeBranch from '../git/verifyMergeBranch';
 import getUserConfig from '../utils/getUserConfig';
 import { commitLogs } from '../utils/meta';
-import chalk from 'chalk';
 import Init from './init';
 
 export interface YOption {
@@ -35,9 +35,9 @@ export default function (options: YOption) {
         process.exit(0);
     }
     const userConfig = getUserConfig({ cwd });
-    const hooks: HooksType = args.hooks;
+    const { hooks } = args;
     if (hooks === 'commit-msg') {
-        const HUSKY_GIT_PARAMS = args['_']?.[0];
+        const HUSKY_GIT_PARAMS = args._?.[0];
         // commit 校验
         verifyCommit({ userConfig, HUSKY_GIT_PARAMS });
         return;
