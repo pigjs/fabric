@@ -36,7 +36,8 @@
         "dev": "father-build -w",
         "pre-commit": "node ./bin/index.js --hooks=pre-commit && lint-staged",
         "pre-merge-commit": "node ./bin/index.js --hooks=pre-merge-commit",
-        "prepare": "npx husky install"
+        "prepare": "npx husky install",
+        "pub": "npm publish --access public"
     },
     "lint-staged": {
         "*.{js,jsx,ts,tsx,less,css,md}": "pretty-quick --staged",
@@ -91,9 +92,6 @@
         "babel-plugin-add-module-exports": "^1.0.4",
         "father-build": "^1.22.5",
         "rimraf": "^3.0.2"
-    },
-    "publishConfig": {
-        "registry": "https://www.npmjs.com"
     },
     "overrides": {
         "coa": "2.0.2"
