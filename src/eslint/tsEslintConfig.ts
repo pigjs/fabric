@@ -89,7 +89,7 @@ export const tsEslintRules = {
     '@typescript-eslint/no-unsafe-member-access': 'off',
     '@typescript-eslint/no-unsafe-return': 'off',
     'no-unused-expressions': 'off',
-    '@typescript-eslint/no-unused-expressions': 'error',
+    '@typescript-eslint/no-unused-expressions': 'warn', // 禁止使用未使用的表达式
     'no-unused-vars': 'off', // 禁止出现未使用过的变量
     'no-use-before-define': 'off', // 不允许在变量定义之前使用它们
     'no-useless-constructor': 'off', // 不需要编写无用的构造方法
