@@ -39,6 +39,7 @@ export const tsEslintRules = {
     '@typescript-eslint/no-confusing-non-null-assertion': 'error', // Disallow non-null assertion in locations that may be confusing
     '@typescript-eslint/no-confusing-void-expression': 'off', // Require expressions of type void to appear in statement position
     '@typescript-eslint/no-dupe-class-members': 'error', // 禁止类成员中出现重复的名称
+    'no-duplicate-imports': 'off',
     '@typescript-eslint/no-duplicate-imports': ['warn', { includeExports: true }], // 避免模块重复引入和导出
     '@typescript-eslint/no-dynamic-delete': 'off', // Disallow using the delete operator on computed key expressions
     'no-empty-function': 'off',
