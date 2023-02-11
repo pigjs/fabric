@@ -73,5 +73,5 @@ ${chalk.green(`chore(模块): 对脚手架做了些更改`)}
 ${chalk.green(
     `其他提交类型: refactor, perf, workflow, build, CI, typos, types, tests, wip, release, deps, revert, locale\n`
 )}
-${chalk.red(`See https://github.com/pigjs/fabric/docs/git\n`)}
+${chalk.red(`See https://github.com/pigjs/fabric/blob/main/docs/git/index.md\n`)}
 `;
