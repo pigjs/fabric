@@ -28,9 +28,9 @@ export const originalConfigFiles = [
 ];
 
 export const lintStaged = {
-    '*.{js,jsx,ts,tsx,less,css,md}': 'pretty-quick --staged',
     '*.{js,jsx,ts,tsx}': 'eslint --fix --quiet',
-    '*.{css,less}': 'stylelint'
+    '*.{css,less}': ['pretty-quick --staged', 'stylelint'],
+    '*.md': 'pretty-quick --staged'
 };
 
 export const scripts = {

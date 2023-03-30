@@ -37,6 +37,21 @@
 
 shamefully-hoist=true
 
+### vscode 配置保存自动格式化
+
+在 settings.json 文件，配置自动保存和格式化
+
+```json
+{
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "editor.formatOnSave": true
+}
+```
+
+推荐团队成员使用相同的编辑器（如 VSCode）并共享编辑器设置。创建一个 .vscode 文件夹（如果尚不存在），并在其中添加一个 settings.json 文件，配置自动保存和格式化
+
 ### 如何自定义 git commit、git merge branch 校验规则
 
 在项目根目录创建 .pigrc.js 或者 .pigrc.json 文件
