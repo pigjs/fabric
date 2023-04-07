@@ -1,6 +1,6 @@
 {
     "name": "@pigjs/fabric",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "A collection of configuration files including prettier, eslint, stylelint, husky, git hooks can automatically generate configuration files",
     "keywords": [
         "eslint",
@@ -40,8 +40,12 @@
         "prepare": "npx husky install"
     },
     "lint-staged": {
-        "*.{js,jsx,ts,tsx,less,css,md}": "pretty-quick --staged",
-        "*.{js,jsx,ts,tsx}": "eslint --no-eslintrc -c ./.eslintrc.js --fix --quiet"
+        "*.{js,jsx,ts,tsx}": "eslint --no-eslintrc -c ./.eslintrc.js --fix --quiet",
+        "*.{css,less}": [
+            "pretty-quick --staged",
+            "stylelint"
+        ],
+        "*.md": "pretty-quick --staged"
     },
     "dependencies": {
         "@babel/core": "^7.12.10",

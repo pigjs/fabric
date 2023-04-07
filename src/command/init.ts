@@ -13,7 +13,8 @@ import {
     huskyCopyFiles,
     lintStaged,
     originalConfigFiles,
-    scripts
+    scripts,
+    vscodeCopyFiles
 } from '../utils/meta';
 
 const { prompt } = inquirer;
@@ -124,5 +125,7 @@ export default class Init {
         await this.createConfigFile(copyFiles);
         // 创建 husky 相关 hooks
         await this.createConfigFile(huskyCopyFiles, `.husky`);
+        // 创建 vscode 配置文件
+        await this.createConfigFile(vscodeCopyFiles, `.vscode`);
     }
 }

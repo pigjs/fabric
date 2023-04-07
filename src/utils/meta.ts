@@ -62,6 +62,8 @@ export const copyFiles = [
 
 export const huskyCopyFiles = ['commit-msg', 'pre-commit', 'pre-merge-commit'];
 
+export const vscodeCopyFiles = ['settings.json'];
+
 export const commitLogs = `
 ${chalk.green(`[branchName?]<type>[(scope)?]: <message>\n`)}
 ${chalk.green(`xxx feat(xxx模块): 添加了个很棒的功能`)}
